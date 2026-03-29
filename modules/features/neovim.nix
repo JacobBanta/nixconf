@@ -29,7 +29,7 @@
           clang-tools
           nixd
           gopls
-          zls
+          inputs.zls.packages.${pkgs.stdenv.hostPlatform.system}.zls
           lua-language-server
           ripgrep
           fd
@@ -49,6 +49,22 @@
             vim.opt.splitright = true
             vim.opt.splitbelow = true
           '';
+        };
+
+        specs.flexoki = {
+          data = pkgs.vimUtils.buildVimPlugin {
+            name = "flexoki";
+            src = pkgs.fetchurl {
+              url = "https://raw.githubusercontent.com/kepano/flexoki/0fd45bcfc46a99930961280a63de0e96d5c58d5f/vim/flexoki_dark.vim";
+              hash = "sha256-CNDGy/Bqbb2JYxKBxAXVKTBiORqm2Px3QnBz7mtl7kE=";
+            };
+            unpackPhase = ''
+              mkdir -p colors
+              cp $src colors/flexoki_dark.vim
+            '';
+          };
+          before = [ "INIT_MAIN" ];
+          config = ''vim.cmd.colorscheme("flexoki_dark")'';
         };
 
         specs.treesitter = {
@@ -89,6 +105,11 @@
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
           '';
         };
 

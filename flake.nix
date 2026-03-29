@@ -6,6 +6,9 @@
     import-tree.url = "github:vic/import-tree";
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
+    zls.url = "github:zigtools/zls";
+    zig.url = "github:mitchellh/zig-overlay";
   };
 
   outputs =

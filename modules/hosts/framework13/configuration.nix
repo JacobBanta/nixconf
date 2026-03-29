@@ -11,6 +11,8 @@
         tmux
         git
         ripgrep
+        inputs.zig.packages.${pkgs.stdenv.hostPlatform.system}.master
+        nasm
       ];
 
       # Bootloader.
