@@ -45,7 +45,6 @@
       };
 
       config.package = lib.mkDefault pkgs.hyprland;
-      config.extraPackages = [ pkgs.adwaita-icon-theme ];
       config.constructFiles.generatedConfig = {
         relPath = "${config.binName}-config.conf";
         content =

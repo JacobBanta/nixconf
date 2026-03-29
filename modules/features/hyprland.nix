@@ -29,6 +29,8 @@
             env = [
               "XCURSOR_THEME,Adwaita"
               "XCURSOR_SIZE,24"
+              "XCURSOR_PATH,${pkgs.adwaita-icon-theme}/share/icons"
+              "XDG_DATA_DIRS,${pkgs.adwaita-icon-theme}/share"
             ];
 
             "exec-once" = [
@@ -140,9 +142,7 @@
       wrappers.control_type = "exclude";
       wrappers.packages.hyprland = true;
 
-      packages.myHyprland = mkHyprland "SUPER";
-      packages.myHyprlandNested = mkHyprland "ALT";
-      packages.hyprland = self'.packages.myHyprland;
-      packages.hyprlandNested = self'.packages.myHyprlandNested;
+      packages.hyprland = mkHyprland "SUPER";
+      packages.hyprlandNested = mkHyprland "ALT";
     };
 }
