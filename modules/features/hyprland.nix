@@ -34,6 +34,7 @@
             ];
 
             "exec-once" = [
+              "${lib.getExe self'.packages.hyprpaper}"
             ];
 
             general = {
