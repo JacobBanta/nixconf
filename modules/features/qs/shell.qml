@@ -15,7 +15,9 @@ ShellRoot {
         color: "#1c1c1c"
 
         Row {
-            anchors.left: parent
+            anchors.left: parent.left
+            anchors.leftMargin: 6
+            anchors.verticalCenter: parent.verticalCenter
             // anchors.centerIn: parent.left
             spacing: 8
 
