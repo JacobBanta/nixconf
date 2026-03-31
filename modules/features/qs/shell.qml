@@ -1,48 +1,45 @@
-import Quickshell
 import QtQuick
+import Quickshell
+import Quickshell.Wayland
 
-PanelWindow {
-  anchors {
-    top: true
-    left: true
-    right: true
-  }
+ShellRoot {
+    Dropdown {}
+    DropdownOverlay {}
 
-  implicitHeight: 30
+    PanelWindow {
+        anchors.top: true
+        anchors.left: true
+        anchors.right: true
+        height: 35
+        exclusiveZone: 35
+        color: "#1c1c1c"
 
-  Row{
-    anchors.centerIn: parent
-    StatWidget {
-      id: widget
-      active: true
+        Row {
+            anchors.left: parent
+            // anchors.centerIn: parent.left
+            spacing: 8
 
-      Text {
-        text: "75%"
-        color: "#ffffff"
-      }
+            StatWidget {
+                active: true
 
-      Timer {
-        running: true
-        repeat: true
-        interval: 5000
-        onTriggered: widget.active = !widget.active
-      }
+                Text {
+                    text: "clock widget"
+                    color: "#ffffff"
+                }
+
+                TapHandler {
+                    onTapped: MyState.toggleDropdown()
+                }
+            }
+        }
+        Row {
+            anchors.centerIn: parent
+            spacing: 8
+
+            StatWidget {
+                active: true
+                Text { text: "stat widget"; color: "#ffffff" }
+            }
+        }
     }
-    StatWidget {
-      id: widget2
-      active: false
-
-      Text {
-        text: "75%"
-        color: "#ffffff"
-      }
-
-      Timer {
-        running: true
-        repeat: true
-        interval: 7000
-        onTriggered: widget2.active = !widget2.active
-      }
-    }
-  }
 }
