@@ -53,7 +53,9 @@ PanelWindow {
             // tab buttons
             RowLayout {
                 Layout.fillWidth: true
-                Layout.margins: 24
+                Layout.preferredHeight: 50
+                Layout.leftMargin: 18
+                Layout.rightMargin: 6
                 spacing: 4
 
                 Repeater {
@@ -88,6 +90,8 @@ PanelWindow {
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.leftMargin: 12
+                // height: parent.height - 80
 
                 orientation: ListView.Horizontal
                 snapMode: ListView.SnapOneItem
@@ -95,17 +99,16 @@ PanelWindow {
                 highlightMoveDuration: root.animationDuration
                 currentIndex: MyState.currentSection
 
-                model: [calendarSection, mediaSection, statsSection]
+                model: 3
 
-                delegate: DropdownSection {
-                    // placeholder content — fill in per section later
-                    required property var modelData
+                delegate: Item {
+                    required property int index
+                    width: ListView.view.width
+                    height: ListView.view.height
 
-                    Text {
-                        text: ["Calendar", "Media", "Stats"][index]
-                        color: "#666666"
-                        font.pixelSize: 24
-                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    Loader {
+                        anchors.fill: parent
+                        source: ["CalendarSection.qml", "MediaSection.qml", "StatsSection.qml"][index]
                     }
                 }
             }
@@ -113,7 +116,6 @@ PanelWindow {
 
         // escape to close
         Shortcut {
-
             sequence: "Escape"
             onActivated: MyState.toggleDropdown()
         }
