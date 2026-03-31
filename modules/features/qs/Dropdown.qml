@@ -13,7 +13,7 @@ PanelWindow {
     property int animationDuration: 200
 
     // --- window setup ---
-    visible: MyState.dropdownOpen
+    visible: panel.y > -420
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
     color: "transparent"
