@@ -35,6 +35,7 @@
 
             "exec-once" = [
               "${lib.getExe self'.packages.hyprpaper}"
+              "${lib.getExe pkgs.quickshell} -c ${self}/modules/features/qs"
             ];
 
             general = {
