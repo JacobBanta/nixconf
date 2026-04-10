@@ -15,7 +15,11 @@
         nasm
         clang
         brave
+        btop
+        fprintd
       ];
+
+      services.fprintd.enable = true;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
@@ -64,6 +68,15 @@
 
       hardware.graphics.enable = true;
       security.polkit.enable = true;
+      security.polkit.extraConfig = ''
+        polkit.addRule(function(action, subject) {
+          if (action.id.indexOf("net.reactivated.fprint") == 0 && subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+          }
+        });
+      '';
+      security.pam.services.login.fprintAuth = true;
+      security.pam.services.sudo.fprintAuth = true;
 
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions
