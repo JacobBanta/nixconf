@@ -170,6 +170,8 @@
 
         specs.plenary = pkgs.vimPlugins.plenary-nvim;
 
+        specs.context = pkgs.vimPlugins.context-vim;
+
         specs.nvim-tree = {
           data = pkgs.vimPlugins.nvim-tree-lua;
           config = ''
@@ -200,11 +202,6 @@
         specs.gitsigns = {
           data = pkgs.vimPlugins.gitsigns-nvim;
           config = ''require("gitsigns").setup()'';
-        };
-
-        specs.autopairs = {
-          data = pkgs.vimPlugins.nvim-autopairs;
-          config = ''require("nvim-autopairs").setup()'';
         };
 
         specs.comment = {
