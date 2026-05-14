@@ -11,15 +11,18 @@
         tmux
         git
         ripgrep
-        inputs.zig.packages.${pkgs.stdenv.hostPlatform.system}.master
+        inputs.zig.packages.${pkgs.stdenv.hostPlatform.system}."0.16.0"
         nasm
+        gcc
         clang
         brave
         btop
         fprintd
+        fzf
       ];
 
       services.fprintd.enable = true;
+      services.upower.enable = true;
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

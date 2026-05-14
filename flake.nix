@@ -7,7 +7,7 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
-    zls.url = "github:zigtools/zls";
+    zls.url = "github:zigtools/zls/494486203c3a48927f2383aa3d5ce5fca112186d";
     zig.url = "github:mitchellh/zig-overlay";
   };
 
