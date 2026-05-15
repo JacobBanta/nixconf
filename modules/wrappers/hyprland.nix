@@ -97,6 +97,8 @@
       config.passthru.providedSessions = pkgs.hyprland.passthru.providedSessions;
       config.meta.platforms = lib.platforms.linux;
       config.appendFlag = [
+        { data = "--path"; }
+        { data = "${pkgs.hyprland}/bin/hyprland"; }
         { data = "--"; }
         { data = "--config"; }
         { data = config.constructFiles.generatedConfig.path; }
