@@ -6,7 +6,7 @@
       programs.hyprland.package = {
         inherit pkgs;
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.myHyprland;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       };
     };
 
@@ -32,6 +32,10 @@
               "XCURSOR_PATH,${pkgs.adwaita-icon-theme}/share/icons"
               "XDG_DATA_DIRS,${pkgs.adwaita-icon-theme}/share"
             ];
+
+            cursor = {
+              no_hardware_cursors = true;
+            };
 
             "exec-once" = [
               "${lib.getExe self'.packages.hyprpaper}"
@@ -87,16 +91,15 @@
               touchpad.natural_scroll = false;
             };
 
-            #gestures.workspace_swipe = false;
-
             bind = [
               "${mod}, Q, exec, ${terminal}"
               "${mod}, C, killactive"
               "${mod}, M, exit"
               "${mod}, V, togglefloating"
-              "${mod}, R, exec, ${lib.getExe pkgs.hyprlauncher}"
               "${mod}, P, pseudo"
               "${mod}, J, togglesplit"
+              "${mod}, B, exec, brave"
+              "${mod}, H, exec, steam"
 
               "${mod}, left, movefocus, l"
               "${mod}, right, movefocus, r"
