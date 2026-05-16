@@ -39,6 +39,7 @@
 
             "exec-once" = [
               "${lib.getExe self'.packages.hyprpaper}"
+              "dms run"
             ];
 
             general = {

@@ -19,6 +19,10 @@
         btop
         fzf
         xwayland
+        quickshell
+        dms-shell
+        dgop
+        pulseaudio
       ];
       programs.steam.enable = true;
 
@@ -58,6 +62,13 @@
         layout = "us";
         variant = "";
       };
+
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        pulse.enable = true;
+      };
+      security.rtkit.enable = true;
 
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.jacob = {

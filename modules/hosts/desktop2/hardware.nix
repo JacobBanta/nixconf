@@ -25,6 +25,7 @@
       boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
       boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+      boot.blacklistedKernelModules = [ "nouveau" ];
 
       hardware.nvidia = {
         modesetting.enable = true;
@@ -33,7 +34,7 @@
         package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
 
-      # services.xserver.videoDrivers = [ "nvidia" ];
+      services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.graphics.enable32Bit = true;
 
